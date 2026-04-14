@@ -1,13 +1,5 @@
 /* =========================
-    VARIABLES 
-========================= */
-
-:root{
-    --orbit-radius: 150px; /* radio corregido */
-}
-
-/* =========================
-    ORBITA
+    ORBITA (ORIGINAL)
 ========================= */
 
 .orbit{
@@ -21,7 +13,7 @@
 }
 
 /* =========================
-    NODOS
+    NODOS (ORIGINAL DESKTOP)
 ========================= */
 
 .node{
@@ -33,11 +25,10 @@
     transform:
     translate(-50%, -50%)
     rotate(calc(45deg * var(--i)))
-    translate(var(--orbit-radius))
+    translate(180px)
     rotate(calc(-45deg * var(--i)));
 
     text-align:center;
-    z-index:20;
 }
 
 /* =========================
@@ -138,30 +129,47 @@
 }
 
 /* =========================
-    RESPONSIVE
+    FIX SOLO MOBILE
 ========================= */
 
-/* 📱 MOBILE */
 @media (max-width: 640px){
 
-    :root{
-        --orbit-radius: 95px;
-    }
-
+    /* CONTENEDOR */
     .relative.w-\[420px\]{
         width:280px !important;
         height:280px !important;
     }
 
+    /*  AJUSTE CLAVE: radio más equilibrado */
+    .node{
+        transform:
+        translate(-50%, -50%)
+        rotate(calc(45deg * var(--i)))
+        translate(120px)
+        rotate(calc(-45deg * var(--i)));
+
+        z-index:10;
+    }
+
+    /*  CENTRO MÁS PEQUEÑO */
+    .absolute.w-40{
+        width:100px !important;
+        height:100px !important;
+        z-index:1;
+    }
+
+    /* NODOS MÁS PEQUEÑOS */
     .node-circle{
         width:42px;
         height:42px;
     }
 
+    /* TEXTO */
     .node-label{
         font-size:9px;
     }
 
+    /* ÓRBITAS MÁS PEQUEÑAS */
     .orbit-line-1{
         width:200px;
         height:200px;
@@ -170,44 +178,6 @@
     .orbit-line-2{
         width:260px;
         height:260px;
-    }
-
-}
-
-/* 📲 TABLET */
-@media (min-width: 641px) and (max-width: 1024px){
-
-    :root{
-        --orbit-radius: 130px;
-    }
-
-    .relative.w-\[420px\]{
-        width:360px !important;
-        height:360px !important;
-    }
-
-}
-
-/* 💻 DESKTOP GRANDE */
-@media (min-width: 1280px){
-
-    :root{
-        --orbit-radius: 190px;
-    }
-
-    .relative.w-\[420px\]{
-        width:500px !important;
-        height:500px !important;
-    }
-
-    .orbit-line-1{
-        width:420px;
-        height:420px;
-    }
-
-    .orbit-line-2{
-        width:500px;
-        height:500px;
     }
 
 }

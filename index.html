@@ -3,70 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metodos Activos</title>
+    <title>Document</title>
 
-    <!--  Estilos css  -->
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/componentes/header.css">
-    <link rel="stylesheet" href="css/componentes/hero.css">
-    
-    <!--  Js  -->   
-    <script src="js/header.js" defer></script>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Config Tailwind -->
+    <script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "secondary-fixed": "#ffdbcb",
+                    "on-secondary-fixed-variant": "#7a3000",
+                    "on-primary-container": "#ffffff",
+                    "secondary-fixed-dim": "#ffb692",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "outline": "#6e797b",
+                    "surface-dim": "#c7dde9",
+                    "surface-variant": "#cfe6f2",
+                    "on-primary-fixed-variant": "#004f56",
+                    "surface": "#f3faff",
+                    "tertiary": "#006874",
+                    "inverse-primary": "#75d5e2",
+                    "primary": "#006872",
+                    "inverse-surface": "#1e333c",
+                    "on-surface-variant": "#3e494a",
+                    "surface-tint": "#006972",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#341100",
+                    "surface-container-low": "#e6f6ff",
+                    "surface-container": "#dbf1fe",
+                    "on-secondary-container": "#562000",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#dff4ff",
+                    "on-background": "#071e27",
+                    "secondary": "#9f4200",
+                    "outline-variant": "#bdc9ca",
+                    "on-surface": "#071e27",
+                    "primary-fixed-dim": "#75d5e2",
+                    "surface-container-high": "#d5ecf8",
+                    "surface-bright": "#f3faff",
+                    "primary-container": "#00838f",
+                    "on-primary-fixed": "#001f23",
+                    "on-tertiary-fixed-variant": "#004f58",
+                    "on-tertiary-fixed": "#001f24",
+                    "surface-container-highest": "#cfe6f2",
+                    "background": "#f3faff",
+                    "secondary-container": "#fd6c00",
+                    "tertiary-fixed-dim": "#45d8ed",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#92f1fe",
+                    "tertiary-fixed": "#98f0ff",
+                    "tertiary-container": "#008391",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#ffffff"
+                },
+
+                fontFamily: {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Manrope"],
+                    "label": ["Lexend"]
+                },
+
+                borderRadius: {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+                },
+            },
+        },
+    }
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style_componentes/grid.css">
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;family=Lexend:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
-<body>
+<body class="bg-background text-on-background font-body selection:bg-secondary-fixed">
+    <!-- NAVBAR -->
+    <div id="navbar"></div>
 
-    <!--  Menu  -->
-    <header>
-        <nav class="navbar" >
+    <!-- MAIN/SECCIONES -->
+    <main class="pt-5rem"></main>
 
-            <!--  Logo  -->
-            <div class="logo">
-                <a href="|">
-                    Robotica Educativa
-                </a>
-            </div>
+    <!-- FOOTER --> 
+    <div id="footer"></div>
 
-            <div class="menu-toggle">
-            ☰
-            </div>
-
-            <ul>
-                <li><a href="">Metodos activos</a></li>
-                <li><a href="">Sobre mi</a></li>
-                <li><a href="">Contacto</a></li>
-            </ul>
-
-        </nav>
-    </header>
-
-    <section class="hero" >
-        <div class="hero-fondo"></div>
-
-        <div class="hero-contenido">
-            <span class="tag">Mejora tus habilidades</span>
-
-            <h1>
-                Construye el <span>Futuro</span>
-            </h1>
-            <p>Libera tu ingeniero interior con kits de robótica prácticos y cursos diseñados para innovadores.</p>
-
-            <div class="hero-botones">
-                <a href="#" class="btn-primario">Comienza</a>
-                <a href="#" class="btn-primario">Ver demo</a>
-            </div>
-
-            <div class="hero-card">
-                <h4>Sistema Online</h4>
-                <p>Activo</p>
-
-                <div class="progreso">
-                    <div class="bar"></div>
-                </div>
-
-                <span>75%</span>
-            </div>
-        </div>
-    </section>
+    <!-- JS -->
+    <script src="js/main.js"></script>
 
 </body>
 </html>

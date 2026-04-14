@@ -1,0 +1,247 @@
+<section class="py-24 px-6 md:px-20" id="grid">
+
+    <!-- TITULO -->
+
+    <div class="text-center mb-16">
+
+        <p class="font-label text-sm uppercase tracking-widest text-on-surface-variant mb-3">
+        Robotica Educativa
+        </p>
+
+        <h2 class="font-headline text-4xl md:text-5xl font-bold text-primary">
+        Métodos Activos
+        </h2>
+
+        <div class="h-1 w-24 bg-secondary-container mx-auto mt-5 rounded-full"></div>
+
+    </div>
+
+    <!-- DIAGRAMA -->
+
+    <div class="flex justify-center">
+
+        <div class="relative w-[420px] h-[420px] flex items-center justify-center">
+
+            <!-- CENTRO -->
+
+            <div class="absolute w-40 h-40 rounded-full bg-primary flex items-center justify-center text-white shadow-xl border-4 border-white z-10">
+
+                <div class="text-center">
+
+                    <span class="material-symbols-outlined text-4xl mb-1"
+                    style="font-variation-settings:'FILL'1">
+                    hub
+                    </span>
+
+                    <p class="font-headline text-sm font-bold">
+                    Metodos activos
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- LINEAS ORBITA -->
+            <div class="orbit-line orbit-line-1"></div>
+            <div class="orbit-line orbit-line-2"></div>
+
+            <!-- ORBITA -->
+
+            <div class="orbit">
+
+                <!-- NODE 1 -->
+                <div class="node" style="--i:0">
+
+                    <div class="node-content">
+
+                        <div class="node-circle">
+                            <a href="#" onclick="openModal('steam'); return false;">
+                                <span class="material-symbols-outlined">science</span>
+                            </a>
+                        </div>
+
+                        <span class="node-label">
+                            STEAM
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- NODE 2 -->
+                <div class="node" style="--i:1">
+
+                    <div class="node-content">
+
+                        <div class="node-circle">
+                            <a href="#" onclick="openModal('steam'); return false;">
+                                <span class="material-symbols-outlined">terminal</span>
+                            </a>
+                        </div>
+
+                        <span class="node-label">
+                            Coding
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- NODE 3 -->
+                <div class="node" style="--i:2">
+
+                    <div class="node-content">
+
+                        <div class="node-circle">
+                            <a href="#" onclick="openModal('steam'); return false;">
+                                <span class="material-symbols-outlined">build</span>
+                            </a>
+                        </div>
+
+                        <span class="node-label">
+                            Maker
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- NODE 4 -->
+                <div class="node" style="--i:3">
+
+                    <div class="node-content">
+                        <div class="node-circle">
+                            <a href="#" onclick="openModal('steam'); return false;">
+                                <span class="material-symbols-outlined">sports_esports</span>
+                            </a>
+                        </div>
+
+                        <span class="node-label">
+                            AI
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- NODE 5 -->
+                <div class="node" style="--i:4">
+
+                    <div class="node-content">
+
+                        <div class="node-circle">
+                            <a href="#" onclick="openModal('steam'); return false;">
+                                <span class="material-symbols-outlined">sports_esports</span>
+                            </a>
+                        </div>
+
+                        <span class="node-label">
+                            Gamify
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- NODE 6 -->
+                <div class="node" style="--i:5">
+
+                    <div class="node-content">
+
+                        <div class="node-circle">
+                            <a href="#" onclick="openModal('steam'); return false;">
+                                <span class="material-symbols-outlined">groups</span>
+                            </a>
+                        </div>
+
+                        <span class="node-label">
+                            Robótica
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- NODE 7 -->
+                <div class="node" style="--i:6">
+
+                    <div class="node-content">
+
+                        <div class="node-circle">
+                            <a href="#" onclick="openModal('steam'); return false;">
+                                <span class="material-symbols-outlined">inventory_2</span>
+                            </a>
+                        </div>
+
+                        <span class="node-label">
+                            Proyectos
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- NODE 8 -->
+                <div class="node" style="--i:7">
+
+                    <div class="node-content">
+
+                        <div class="node-circle">
+                            <a href="#" onclick="openModal('steam'); return false;">
+                                <span class="material-symbols-outlined">view_in_ar</span>
+                            </a>
+                        </div>
+
+                        <span class="node-label">
+                            3D Model
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- MODAL -->
+
+<div id="modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden items-center justify-center z-50 px-6">
+
+    <div class="bg-surface-container-lowest max-w-xl w-full rounded-2xl border border-outline-variant shadow-2xl p-8 relative text-center">
+
+        <!-- BOTON VOLVER -->
+
+        <button onclick="closeModal()" class="absolute top-6 left-6 text-on-surface-variant hover:text-primary transition">
+
+            <span class="material-symbols-outlined text-2xl">
+                arrow_back
+            </span>
+
+        </button>
+
+
+        <!-- TITULO -->
+
+        <h3 id="modalTitle" class="font-headline text-3xl font-bold text-primary mb-6">
+        </h3>
+
+
+        <!-- IMAGEN -->
+
+        <img id="modalImage"
+        class="w-full h-56 object-cover rounded-xl mb-6 shadow-md border border-outline-variant">
+
+
+        <!-- DESCRIPCION -->
+
+        <p id="modalText"
+        class="font-body text-on-surface-variant leading-relaxed max-w-lg mx-auto">
+        </p>
+
+    </div>
+
+</div>

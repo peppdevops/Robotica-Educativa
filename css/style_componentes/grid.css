@@ -1,4 +1,6 @@
-/* ORBITA */
+/* =========================
+   ORBITA
+========================= */
 
 .orbit{
     position:absolute;
@@ -10,12 +12,11 @@
     animation:orbit-spin 35s linear infinite;
 }
 
-
-
-/* NODOS */
+/* =========================
+   NODOS
+========================= */
 
 .node{
-
     position:absolute;
 
     top:50%;
@@ -28,29 +29,25 @@
     rotate(calc(-45deg * var(--i)));
 
     text-align:center;
-
 }
 
-
-
-/* CONTENIDO DEL NODO */
+/* =========================
+   CONTENIDO DEL NODO
+========================= */
 
 .node-content{
-
     display:flex;
     flex-direction:column;
     align-items:center;
 
     animation:counter-spin 35s linear infinite;
-
 }
 
-
-
-/* CIRCULO */
+/* =========================
+   CIRCULO
+========================= */
 
 .node-circle{
-
     width:60px;
     height:60px;
 
@@ -61,7 +58,6 @@
     border-radius:50%;
 
     background:white;
-
     color:#006872;
 
     border:1px solid #bdc9ca;
@@ -69,101 +65,157 @@
     box-shadow:0 6px 14px rgba(0,0,0,0.08);
 
     transition:all .35s ease;
-
 }
 
-
-
-/* TEXTO */
+/* =========================
+   TEXTO
+========================= */
 
 .node-label{
-
     margin-top:6px;
-
     font-size:11px;
-
     text-transform:uppercase;
-
     color:#3e494a;
-
     letter-spacing:.05em;
-
 }
 
-
-
-/* HOVER */
+/* =========================
+   HOVER
+========================= */
 
 .node:hover .node-circle{
-
     transform:scale(1.2);
-
     background:#fd6c00;
-
     color:white;
-
     box-shadow:0 10px 30px rgba(0,0,0,0.25);
-
 }
 
-
-
-/* ANIMACION ORBITA */
+/* =========================
+   ANIMACIONES
+========================= */
 
 @keyframes orbit-spin{
-
-    from{
-        transform:rotate(0deg);
-    }
-
-    to{
-        transform:rotate(360deg);
-    }
-
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
 }
-
-
-
-/* CONTRA ROTACION */
 
 @keyframes counter-spin{
-
-    from{
-        transform:rotate(0deg);
-    }
-
-    to{
-        transform:rotate(-360deg);
-    }
-
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(-360deg); }
 }
 
-/* LINEAS DE ORBITA */
+/* =========================
+   LINEAS DE ORBITA
+========================= */
 
 .orbit-line{
     position:absolute;
     border-radius:50%;
     border:2px dashed rgba(0,104,114,0.45);
     pointer-events:none;
-
 }
 
 /* ORBITA PRINCIPAL */
-
 .orbit-line-1{
-
     width:360px;
     height:360px;
-
 }
 
 /* ORBITA EXTERIOR */
-
 .orbit-line-2{
-
     width:420px;
     height:420px;
-
     opacity:.4;
+}
+
+/* =========================
+   🔥 RESPONSIVE
+========================= */
+
+/* 📱 MOBILE */
+@media (max-width: 640px){
+
+    /* tamaño contenedor */
+    .relative.w-\[420px\]{
+        width:280px !important;
+        height:280px !important;
+    }
+
+    /* nodos más cerca */
+    .node{
+        transform:
+        translate(-50%, -50%)
+        rotate(calc(45deg * var(--i)))
+        translate(100px)
+        rotate(calc(-45deg * var(--i)));
+    }
+
+    /* círculos más pequeños */
+    .node-circle{
+        width:42px;
+        height:42px;
+    }
+
+    /* texto más pequeño */
+    .node-label{
+        font-size:9px;
+    }
+
+    /* órbitas más pequeñas */
+    .orbit-line-1{
+        width:200px;
+        height:200px;
+    }
+
+    .orbit-line-2{
+        width:260px;
+        height:260px;
+    }
+
+}
+
+/* 📲 TABLET */
+@media (min-width: 641px) and (max-width: 1024px){
+
+    .relative.w-\[420px\]{
+        width:360px !important;
+        height:360px !important;
+    }
+
+    .node{
+        transform:
+        translate(-50%, -50%)
+        rotate(calc(45deg * var(--i)))
+        translate(140px)
+        rotate(calc(-45deg * var(--i)));
+    }
+
+}
+
+/* 💻 DESKTOP GRANDE */
+@media (min-width: 1280px){
+
+    .relative.w-\[420px\]{
+        width:500px !important;
+        height:500px !important;
+    }
+
+    .node{
+        transform:
+        translate(-50%, -50%)
+        rotate(calc(45deg * var(--i)))
+        translate(210px)
+        rotate(calc(-45deg * var(--i)));
+    }
+
+    .orbit-line-1{
+        width:420px;
+        height:420px;
+    }
+
+    .orbit-line-2{
+        width:500px;
+        height:500px;
+    }
 
 }

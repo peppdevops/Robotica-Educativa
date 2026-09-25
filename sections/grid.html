@@ -5,7 +5,7 @@
     <div class="text-center mb-16">
 
         <p class="font-label text-sm uppercase tracking-widest text-on-surface-variant mb-3">
-        Robotica Educativa
+        Robótica Educativa
         </p>
 
         <h2 class="font-headline text-4xl md:text-5xl font-bold text-primary">
@@ -34,7 +34,7 @@
                     </span>
 
                     <p class="font-headline text-sm font-bold">
-                    Metodos activos
+                    Métodos activos
                     </p>
 
                 </div>
@@ -55,9 +55,9 @@
                     <div class="node-content">
 
                         <div class="node-circle">
-                            <a href="#" onclick="openModal('ABP_1'); return false;">
+                            <button type="button" aria-label="Aprendizaje basado en proyectos" aria-haspopup="dialog" onclick="openModal('ABP_1')">
                                 <span class="material-symbols-outlined">school</span>
-                            </a>
+                            </button>
                         </div>
 
                         <span class="node-label">
@@ -74,9 +74,9 @@
                     <div class="node-content">
 
                         <div class="node-circle">
-                            <a href="#" onclick="openModal('ABP_2'); return false;">
+                            <button type="button" aria-label="Aprendizaje basado en problemas" aria-haspopup="dialog" onclick="openModal('ABP_2')">
                                 <span class="material-symbols-outlined">history_edu</span>
-                            </a>
+                            </button>
                         </div>
 
                         <span class="node-label">
@@ -93,9 +93,9 @@
                     <div class="node-content">
 
                         <div class="node-circle">
-                            <a href="#" onclick="openModal('AC'); return false;">
+                            <button type="button" aria-label="Aprendizaje colaborativo" aria-haspopup="dialog" onclick="openModal('AC')">
                                 <span class="material-symbols-outlined">groups</span>
-                            </a>
+                            </button>
                         </div>
 
                         <span class="node-label">
@@ -111,9 +111,9 @@
 
                     <div class="node-content">
                         <div class="node-circle">
-                            <a href="#" onclick="openModal('DTII'); return false;">
+                            <button type="button" aria-label="Design Thinking e ingeniería inversa" aria-haspopup="dialog" onclick="openModal('DTII')">
                                 <span class="material-symbols-outlined">design_services</span>
-                            </a>
+                            </button>
                         </div>
 
                         <span class="node-label">
@@ -130,9 +130,9 @@
                     <div class="node-content">
 
                         <div class="node-circle">
-                            <a href="#" onclick="openModal('AI'); return false;">
+                            <button type="button" aria-label="Aula invertida" aria-haspopup="dialog" onclick="openModal('AI')">
                                 <span class="material-symbols-outlined">psychology</span>
-                            </a>
+                            </button>
                         </div>
 
                         <span class="node-label">
@@ -149,9 +149,9 @@
                     <div class="node-content">
 
                         <div class="node-circle">
-                            <a href="#" onclick="openModal('STEM'); return false;">
+                            <button type="button" aria-label="Educación STEM" aria-haspopup="dialog" onclick="openModal('STEM')">
                                 <span class="material-symbols-outlined">business</span>
-                            </a>
+                            </button>
                         </div>
 
                         <span class="node-label">
@@ -168,9 +168,9 @@
                     <div class="node-content">
 
                         <div class="node-circle">
-                            <a href="#" onclick="openModal('ABR'); return false;">
+                            <button type="button" aria-label="Aprendizaje basado en retos" aria-haspopup="dialog" onclick="openModal('ABR')">
                                 <span class="material-symbols-outlined">emoji_events</span>
-                            </a>
+                            </button>
                         </div>
 
                         <span class="node-label">
@@ -187,9 +187,9 @@
                     <div class="node-content">
 
                         <div class="node-circle">
-                            <a href="#" onclick="openModal('LG'); return false;">
+                            <button type="button" aria-label="Gamificación" aria-haspopup="dialog" onclick="openModal('LG')">
                                 <span class="material-symbols-outlined">stadia_controller</span>
-                            </a>
+                            </button>
                         </div>
 
                         <span class="node-label">
@@ -209,13 +209,13 @@
 </section>
 <!-- MODAL -->
 
-<div id="modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden items-center justify-center z-50 px-6">
+<dialog id="modal" aria-labelledby="modalTitle" aria-describedby="modalText" class="method-dialog">
 
-    <div class="bg-surface-container-lowest max-w-xl w-full rounded-2xl border border-outline-variant shadow-2xl p-8 relative text-center">
+    <div class="bg-surface-container-lowest max-w-xl w-full rounded-2xl border border-outline-variant shadow-2xl p-5 sm:p-8 relative text-center">
 
         <!-- BOTON VOLVER -->
 
-        <button onclick="closeModal()" class="absolute top-6 left-6 text-on-surface-variant hover:text-primary transition">
+        <button type="button" autofocus aria-label="Cerrar información" onclick="closeModal()" class="modal-close text-on-surface-variant hover:text-primary transition">
 
             <span class="material-symbols-outlined text-2xl">
                 arrow_back
@@ -232,7 +232,7 @@
 
         <!-- IMAGEN -->
 
-        <img id="modalImage"
+        <img id="modalImage" alt=""
         class="w-full h-56 object-cover rounded-xl mb-6 shadow-md border border-outline-variant">
 
 
@@ -244,4 +244,4 @@
 
     </div>
 
-</div>
+</dialog>

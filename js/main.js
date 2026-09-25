@@ -1,107 +1,67 @@
-// ===============================
-// CARGAR COMPONENTES
-// ===============================
-
-const loadComponent = async (id, file) => {
-
-    const res = await fetch(file);
-    const html = await res.text();
-
-    document.getElementById(id).innerHTML = html;
-
-    // activar menu hamburguesa cuando cargue el navbar
-    if (id === "navbar") {
-        initMobileMenu();
-    }
-
-};
-
-// Navbar y footer
-loadComponent("navbar", "components/navbar.html");
-loadComponent("footer", "components/footer.html");
-
-
-// ===============================
-// CARGAR SECCIONES
-// ===============================
-
-const loadSections = async () => {
-
-    const main = document.querySelector("main");
-
-    const sections = [
-        "sections/hero.html",
-        "sections/grid.html",
-        "sections/kits.html",
-        "sections/cta.html",
-        "sections/profile.html"
-    ];
-
-    for (let section of sections) {
-
-        const res = await fetch(section);
-        const html = await res.text();
-
-        main.innerHTML += html;
-
-    }
-
-};
-
-loadSections();
-
-
-// ===============================
-// MENU HAMBURGUESA
-// ===============================
-
-function initMobileMenu(){
-
-    const btn = document.getElementById("menu-btn");
-    const menu = document.getElementById("mobile-menu");
-
-    if(btn && menu){
-
-        // abrir / cerrar menú
-        btn.addEventListener("click", (e) => {
-            e.stopPropagation(); // evita que el click se propague al document
-            menu.classList.toggle("hidden");
-        });
-
-        // evitar que clicks dentro del menú lo cierren
-        menu.addEventListener("click", (e) => {
-            e.stopPropagation();
-        });
-
-        // cerrar menú al hacer click en un link
-        const links = menu.querySelectorAll("a");
-
-        links.forEach(link => {
-            link.addEventListener("click", () => {
-                menu.classList.add("hidden");
-            });
-        });
-
-        // 👇 Cerrar menú al hacer click fuera
-        document.addEventListener("click", () => {
-            if(!menu.classList.contains("hidden")){
-                menu.classList.add("hidden");
-            }
-        });
-
-    }
-
+// La versión de producción ya incluye el contenido; fetch solo se usa en desarrollo.
+async function loadHTML(file) {
+    const response = await fetch(file);
+    if (!response.ok) throw new Error(file + ': HTTP ' + response.status);
+    return response.text();
 }
 
-// ===============================
-// DATOS DEL MODAL
-// ===============================
+async function loadComponent(id, file) {
+    const container = document.getElementById(id);
+    try { container.innerHTML = await loadHTML(file); }
+    catch (error) { console.error(error); container.textContent = 'No se pudo cargar este contenido. Recarga la página para intentarlo de nuevo.'; }
+}
+
+async function init() {
+    if (document.body.dataset.static !== 'true') {
+        const sections = ['hero', 'grid', 'kits', 'cta', 'profile'];
+        await Promise.all([
+            loadComponent('navbar', 'components/navbar.html'),
+            loadComponent('footer', 'components/footer.html'),
+            Promise.all(sections.map(async name => {
+                try { return await loadHTML('sections/' + name + '.html'); }
+                catch (error) { console.error(error); return '<section id="' + (name === 'kits' ? 'projects' : name) + '" role="status"><p>No se pudo cargar esta sección. Recarga la página para intentarlo de nuevo.</p></section>'; }
+            })).then(parts => document.querySelector('main').insertAdjacentHTML('beforeend', parts.join('')))
+        ]);
+        const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (target) target.scrollIntoView();
+    }
+    initMobileMenu();
+    const modal = document.getElementById('modal');
+    if (modal) {
+        modal.addEventListener('close', () => document.body.classList.remove('modal-open'));
+        modal.addEventListener('click', event => {
+            if (event.target !== modal) return;
+            const rect = modal.getBoundingClientRect();
+            if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closeModal();
+        });
+    }
+}
+
+function initMobileMenu() {
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+    const setOpen = open => {
+        menu.classList.toggle('hidden', !open);
+        btn.setAttribute('aria-expanded', String(open));
+        btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    };
+    btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('click', event => {
+        if (!btn.contains(event.target) && !menu.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { setOpen(false); btn.focus(); }
+    });
+    matchMedia('(min-width: 1024px)').addEventListener('change', () => setOpen(false));
+}
 
 const modalData = {
 
     ABP_1: {
         title: "Aprendizaje Basado en Proyectos (ABP)",
-        text: "El Aprendizaje Basado en Proyectos (ABP), según Guerrero (2024), desarrolla el pensamiento crítico al involucrar a los estudiantes en la solución de problemas reales.Se basa en contenidos significativos, una pregunta guía, participación activa del estudiante y habilidades como comunicación, colaboración y creatividad. Incluye investigación, revisión constante y culmina con la presentación del proyecto ante una audiencia real.",
+        text: "El Aprendizaje Basado en Proyectos (ABP), según Guerrero (2024), desarrolla el pensamiento crítico al involucrar a los estudiantes en la solución de problemas reales. Se basa en contenidos significativos, una pregunta guía, participación activa del estudiante y habilidades como comunicación, colaboración y creatividad. Incluye investigación, revisión constante y culmina con la presentación del proyecto ante una audiencia real.",
         image: "assets/images/ABP_1.jpg"
     },
 
@@ -118,7 +78,7 @@ const modalData = {
     },
 
     DTII: {
-        title: "Desing Thinking e Ingeniería Inversa",
+        title: "Design Thinking e Ingeniería Inversa",
         text: "Rosa y Neto (2020) plantean que el pensamiento de diseño, aplicado a la robótica educativa, permite desarrollar habilidades de orden superior al enfrentar a los estudiantes con problemas reales y guiarlos hacia soluciones innovadoras. Este enfoque se centra en el usuario, promoviendo la experimentación, el modelado, la creación de prototipos y su mejora continua mediante retroalimentación e ingeniería inversa. Además, sigue las cinco etapas del design thinking: empatizar, definir, idear, prototipar y evaluar, destacando la importancia de la creatividad, el análisis y la práctica en el aprendizaje.",
         image: "assets/images/DTII.png"
     },
@@ -149,36 +109,22 @@ const modalData = {
 
 };
 
-
-// ===============================
-// ABRIR MODAL
-// ===============================
-
 function openModal(method) {
-
-    const modal = document.getElementById("modal");
-
-    document.getElementById("modalTitle").innerText = modalData[method].title;
-
-    document.getElementById("modalText").innerText = modalData[method].text;
-
-    document.getElementById("modalImage").src = modalData[method].image;
-
-    modal.classList.remove("hidden");
-    modal.classList.add("flex");
-
+    const data = modalData[method];
+    const modal = document.getElementById('modal');
+    if (!data || !modal) return;
+    document.getElementById('modalTitle').textContent = data.title;
+    document.getElementById('modalText').textContent = data.text;
+    const image = document.getElementById('modalImage');
+    image.src = data.image;
+    image.alt = 'Ilustración de ' + data.title;
+    modal.showModal();
+    modal.scrollTop = 0;
+    document.body.classList.add('modal-open');
 }
-
-
-// ===============================
-// CERRAR MODAL
-// ===============================
 
 function closeModal() {
-
-    const modal = document.getElementById("modal");
-
-    modal.classList.add("hidden");
-    modal.classList.remove("flex");
-
+    document.getElementById('modal')?.close();
 }
+
+init().catch(console.error);

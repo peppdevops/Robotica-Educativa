@@ -152,7 +152,7 @@
     }
 
     /*  CENTRO MÁS PEQUEÑO */
-    .absolute.w-40{
+    #grid .absolute.w-40{
         width:100px !important;
         height:100px !important;
         z-index:1;
